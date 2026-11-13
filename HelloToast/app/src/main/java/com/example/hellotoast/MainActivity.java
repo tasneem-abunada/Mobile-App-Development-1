@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -44,6 +46,26 @@ public class MainActivity extends AppCompatActivity {
     public void increase_count(View view) {
         count++;
         mainBinding.textDisplayCount.setText(String.valueOf(count));
-//        displayCountText.setText(String.valueOf(count));
+        if (count % 2 == 1) {
+        mainBinding.buttonCount.setBackgroundTintList(
+                ColorStateList.valueOf(Color.GREEN));
+            } else {
+        mainBinding.buttonCount.setBackgroundTintList(
+                ColorStateList.valueOf(Color.BLUE));
+            }
+
+        mainBinding.buttonZero.setBackgroundTintList(
+            ColorStateList.valueOf(Color.rgb(255, 165, 0)));
     }
+    public void show_zero(View view) {
+    count = 0;
+
+    mainBinding.textDisplayCount.setText("0");
+
+    mainBinding.buttonZero.setBackgroundTintList(
+            ColorStateList.valueOf(Color.GRAY));
+
+    mainBinding.buttonCount.setBackgroundTintList(
+            ColorStateList.valueOf(Color.BLUE));
+}
 }
